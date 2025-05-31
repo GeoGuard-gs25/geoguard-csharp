@@ -1,6 +1,6 @@
 # 🌪️ GeoGuard - Sistema de Notificações de Desastres Naturais
 
-Este projeto foi desenvolvido como parte do Challenge da **FIAP**, com foco na disciplina de **Desenvolvimento Web com ASP.NET Core**.
+Este projeto foi desenvolvido como parte do Global Solution da **FIAP**, com foco na disciplina de **Desenvolvimento Web com ASP.NET Core**.
 
 O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sobre **possíveis catástrofes naturais**, como enchentes, deslizamentos, terremotos ou incêndios, permitindo ações preventivas e informadas.
 
