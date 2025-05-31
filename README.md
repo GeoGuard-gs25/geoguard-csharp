@@ -46,6 +46,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 |--------|----------------------|----------------------------------|
 | GET    | `/usuarios`          | Lista todos os usuários          |
 | GET    | `/usuarios/{id}`     | Retorna um usuário específico    |
+| GET    | `/usuarios/buscar`     | Retorna um usuário pelo email    |
 | POST   | `/usuarios`          | Cadastra um novo usuário         |
 | PUT    | `/usuarios/{id}`     | Atualiza os dados de um usuário  |
 | DELETE | `/usuarios/{id}`     | Remove um usuário                |
