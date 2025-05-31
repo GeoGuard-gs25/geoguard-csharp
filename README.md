@@ -57,7 +57,9 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 |--------|----------------------------|---------------------------------------|
 | GET    | `/notificacoes`            | Lista todas as notificações           |
 | GET    | `/notificacoes/{id}`       | Retorna uma notificação específica    |
+| GET    | `/notificacoes/usuario/{usuarioId}` | Retorna uma notificação específica    |
 | POST   | `/notificacoes`            | Envia uma nova notificação            |
+| POST   | `/notificacoes/notificar`  | Envia uma nova notificação            |
 | PUT    | `/notificacoes/{id}`       | Atualiza os dados da notificação      |
 | DELETE | `/notificacoes/{id}`       | Exclui uma notificação                |
 
