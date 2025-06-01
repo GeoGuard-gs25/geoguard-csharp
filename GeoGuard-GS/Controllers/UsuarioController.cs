@@ -2,6 +2,7 @@ using GeoGuard_GS.Model;
 using Microsoft.AspNetCore.Mvc;
 using GeoGuard_GS.Exceptions;
 using GeoGuard_GS.Services.Abstractions;
+using GeoGuard_GS.Model.DTO;
 
 namespace GeoGuard_GS.Controllers
 {
@@ -71,18 +72,19 @@ namespace GeoGuard_GS.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> Create(Usuario usuario)
+        public async Task<ActionResult<Usuario>> Create(UsuarioDTO usuario)
         {
             try
             {
-                var usuarioEntity = await _usuarioService.CriarAsync(usuario);
-                return CreatedAtAction(nameof(GetById), new { id = usuarioEntity.Id }, usuarioEntity);
+                var usuarioCriado =  await _usuarioService.CriarAsync(usuario);
+
+                return CreatedAtAction(nameof(GetById), new { id = usuarioCriado.Id }, usuarioCriado);
             }
             catch (UsuarioException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

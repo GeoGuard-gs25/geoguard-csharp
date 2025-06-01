@@ -8,7 +8,7 @@ namespace Challenge_MOTTU.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.ToTable("USUARIO", "RM554694");
+            builder.ToTable("TB_USUARIO", "RM554694");
 
             builder.HasKey(u => u.Id);
 
@@ -25,10 +25,15 @@ namespace Challenge_MOTTU.Data.Mappings
                 .HasMaxLength(100)
                 .HasColumnName("EMAIL");
 
-            builder.Property(u => u.ReceberNotificacoes)
-                .IsRequired()
-                .HasColumnName("RECEBER_NOTIFICACOES")
-                .HasColumnType("NUMBER(1)"); // Oracle não tem BOOLEAN, usamos NUMBER(1)
+            builder.Property(u => u.Senha)
+              .IsRequired()
+              .HasMaxLength(100)
+              .HasColumnName("SENHA");
+
+            builder.Property(u => u.Localizacao)
+              .IsRequired()
+              .HasMaxLength(100)
+              .HasColumnName("LOCALIZACAO");
         }
     }
 }

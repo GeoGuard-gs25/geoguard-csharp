@@ -1,10 +1,11 @@
 ﻿using GeoGuard_GS.Model;
+using GeoGuard_GS.Model.DTO;
 
 namespace GeoGuard_GS.Services.Abstractions
 {
     public interface IUsuarioService
     {
-        Task<Usuario> CriarAsync(Usuario usuario);
+        Task<Usuario> CriarAsync(UsuarioDTO usuario);
 
         Task<Usuario> GetById(int id);
 

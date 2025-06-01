@@ -1,11 +1,12 @@
-﻿namespace GeoGuard_GS.Dtos
+﻿namespace GeoGuard_GS.Model.DTO
 {
-    public class NotificacaoCreateDto
+    public class NotificacaoUpdateDto
     {
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string Mensagem { get; set; }
         public string TipoMensagem { get; set; }
         public DateTime DataEnvio { get; set; }
-        public int? UsuarioId { get; set; }
+        
     }
 }

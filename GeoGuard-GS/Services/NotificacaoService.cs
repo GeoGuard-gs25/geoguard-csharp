@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using GeoGuard_GS.Services.Abstractions;
 using GeoGuard_GS.Exceptions;
+using GeoGuard_GS.Model.DTO;
 
 namespace GeoGuard_GS.Services
 {
@@ -22,10 +23,25 @@ namespace GeoGuard_GS.Services
             if (string.IsNullOrWhiteSpace(notificacao.Mensagem))
                 throw new NotificacaoException("O campo Mensagem é obrigatório.");
 
-            // Pode adicionar outras validações, como UsuarioId válido
+            // Validação se o usuário existe, se UsuarioId for informado
+            if (notificacao.UsuarioId != 0)
+            {
+                var usuarioExiste =  _context.Usuarios.FirstOrDefault(u => u.Id == notificacao.UsuarioId);
+                if (usuarioExiste is null)
+                    throw new NotificacaoException("Usuário informado não existe.");
+            }
 
             _context.Notificacoes.Add(notificacao);
             await _context.SaveChangesAsync();
+
+            return notificacao;
+        }
+
+        public async Task<Notificacao> Notificar(int idUsuario)
+        {
+            Notificacao notificacao = _context.Notificacoes.FirstOrDefault(p => p.UsuarioId == idUsuario);
+
+            notificacao.DataEnvio = DateTime.Now;
 
             return notificacao;
         }
@@ -58,9 +74,9 @@ namespace GeoGuard_GS.Services
             if (notificacao == null)
                 throw new NotificacaoException("Notificação não encontrada.");
 
-            notificacao.Titulo = notificacaoAtualizada.Titulo;
+            notificacao.Titulo =    notificacaoAtualizada.Titulo;
             notificacao.Mensagem = notificacaoAtualizada.Mensagem;
-            notificacao.Tipo = notificacaoAtualizada.Tipo;
+            notificacao.TipoMensagem = notificacaoAtualizada.TipoMensagem;
             notificacao.DataEnvio = notificacaoAtualizada.DataEnvio;
             notificacao.UsuarioId = notificacaoAtualizada.UsuarioId;
 
@@ -80,9 +96,17 @@ namespace GeoGuard_GS.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Notificacao>> GetByUsuarioIdAsync(int usuarioId)
+        public async Task<IEnumerable<Notificacao>> GetByUsuarioIdAsync(int usuarioId)
         {
-            throw new NotImplementedException();
+            var notificacoes = await _context.Notificacoes
+                .Where(n => n.UsuarioId == usuarioId)
+                .Include(n => n.Usuario)
+                .ToListAsync();
+
+            if (notificacoes == null || !notificacoes.Any())
+                throw new NotificacaoException("Nenhuma notificação encontrada para este usuário.");
+
+            return notificacoes;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace GeoGuard_GS.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Notificacao> builder)
         {
-            builder.ToTable("NOTIFICACAO", "RM554694"); 
+            builder.ToTable("TB_NOTIFICACAO", "RM554694"); 
 
             builder.HasKey(n => n.Id);
 
@@ -25,11 +25,15 @@ namespace GeoGuard_GS.Data.Mappings
                 .HasMaxLength(1000)
                 .HasColumnName("MENSAGEM");
 
+            builder.Property(n => n.TipoMensagem)
+              .IsRequired()
+              .HasMaxLength(100)
+              .HasColumnName("TIPO_MENSAGEM");
+
             builder.Property(n => n.DataEnvio)
                 .IsRequired()
                 .HasColumnName("DATA_ENVIO");
 
-            // FK opcional (se houver relacionamento com Usuario)
             builder.Property(n => n.UsuarioId)
                 .HasColumnName("USUARIO_ID");
 

@@ -40,9 +40,11 @@ namespace GeoGuard_GS.Migrations
                         .HasColumnType("NVARCHAR2(1000)")
                         .HasColumnName("MENSAGEM");
 
-                    b.Property<string>("Tipo")
+                    b.Property<string>("TipoMensagem")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR2(100)")
+                        .HasColumnName("TIPO_MENSAGEM");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
@@ -58,7 +60,7 @@ namespace GeoGuard_GS.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("NOTIFICACAO", "RM554694");
+                    b.ToTable("TB_NOTIFICACAO", "RM554694");
                 });
 
             modelBuilder.Entity("GeoGuard_GS.Model.Usuario", b =>
@@ -78,7 +80,9 @@ namespace GeoGuard_GS.Migrations
 
                     b.Property<string>("Localizacao")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR2(100)")
+                        .HasColumnName("LOCALIZACAO");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -86,13 +90,9 @@ namespace GeoGuard_GS.Migrations
                         .HasColumnType("NVARCHAR2(100)")
                         .HasColumnName("NOME");
 
-                    b.Property<bool>("ReceberNotificacoes")
-                        .HasColumnType("NUMBER(1)")
-                        .HasColumnName("RECEBER_NOTIFICACOES");
-
                     b.HasKey("Id");
 
-                    b.ToTable("USUARIO", "RM554694");
+                    b.ToTable("TB_USUARIO", "RM554694");
                 });
 
             modelBuilder.Entity("GeoGuard_GS.Model.Notificacao", b =>

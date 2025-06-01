@@ -4,8 +4,6 @@ namespace GeoGuard_GS.Services.Abstractions
 {
     public interface INotificacaoService
     {
-        object Usuarios { get; }
-
         Task<Notificacao> CriarAsync(Notificacao notificacao);
 
         Task<Notificacao> GetByIdAsync(int id);
@@ -17,5 +15,6 @@ namespace GeoGuard_GS.Services.Abstractions
         Task<Notificacao> AtualizarAsync(int id, Notificacao notificacaoAtualizada);
 
         Task DeletarAsync(int id);
+        Task<Notificacao> Notificar(int idUsuario);
     }
 }
