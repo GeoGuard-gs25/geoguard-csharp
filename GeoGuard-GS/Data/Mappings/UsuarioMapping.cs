@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Challenge_MOTTU.Data.Mappings
+namespace GeoGuard_GS.Data.Mappings
 {
     public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
     {

@@ -11,7 +11,7 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace GeoGuard_GS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250530164554_CriarTabelasUsuarioENotificacao")]
+    [Migration("20250601033552_CriarTabelasUsuarioENotificacao")]
     partial class CriarTabelasUsuarioENotificacao
     {
         /// <inheritdoc />
@@ -92,6 +92,12 @@ namespace GeoGuard_GS.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
                         .HasColumnName("NOME");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR2(100)")
+                        .HasColumnName("SENHA");
 
                     b.HasKey("Id");
 

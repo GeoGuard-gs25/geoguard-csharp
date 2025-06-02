@@ -1,5 +1,4 @@
-﻿using GeoGuard_GS.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GeoGuard_GS.Data.Mappings

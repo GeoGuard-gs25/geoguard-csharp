@@ -1,6 +1,4 @@
-﻿using System.Runtime.ConstrainedExecution;
-
-namespace GeoGuard_GS.Exceptions
+﻿namespace GeoGuard_GS.Exceptions
 {
     public class UsuarioException : Exception
     {

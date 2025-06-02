@@ -23,25 +23,18 @@ namespace GeoGuard_GS.Services
             if (string.IsNullOrWhiteSpace(notificacao.Mensagem))
                 throw new NotificacaoException("O campo Mensagem é obrigatório.");
 
-            // Validação se o usuário existe, se UsuarioId for informado
+            if (string.IsNullOrWhiteSpace(notificacao.TipoMensagem))
+                notificacao.TipoMensagem = "INFO";
+
             if (notificacao.UsuarioId != 0)
             {
-                var usuarioExiste =  _context.Usuarios.FirstOrDefault(u => u.Id == notificacao.UsuarioId);
+                var usuarioExiste = _context.Usuarios.FirstOrDefault(u => u.Id == notificacao.UsuarioId);
                 if (usuarioExiste is null)
                     throw new NotificacaoException("Usuário informado não existe.");
             }
 
             _context.Notificacoes.Add(notificacao);
             await _context.SaveChangesAsync();
-
-            return notificacao;
-        }
-
-        public async Task<Notificacao> Notificar(int idUsuario)
-        {
-            Notificacao notificacao = _context.Notificacoes.FirstOrDefault(p => p.UsuarioId == idUsuario);
-
-            notificacao.DataEnvio = DateTime.Now;
 
             return notificacao;
         }
@@ -74,9 +67,24 @@ namespace GeoGuard_GS.Services
             if (notificacao == null)
                 throw new NotificacaoException("Notificação não encontrada.");
 
-            notificacao.Titulo =    notificacaoAtualizada.Titulo;
+            if (string.IsNullOrWhiteSpace(notificacaoAtualizada.Titulo))
+                throw new NotificacaoException("O campo Título é obrigatório.");
+
+            if (string.IsNullOrWhiteSpace(notificacaoAtualizada.Mensagem))
+                throw new NotificacaoException("O campo Mensagem é obrigatório.");
+
+            if (notificacaoAtualizada.UsuarioId != 0)
+            {
+                var usuarioExiste = await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == notificacaoAtualizada.UsuarioId);
+                if (usuarioExiste == null)
+                    throw new NotificacaoException("Usuário informado não existe.");
+            }
+
+            notificacao.Titulo = notificacaoAtualizada.Titulo;
             notificacao.Mensagem = notificacaoAtualizada.Mensagem;
-            notificacao.TipoMensagem = notificacaoAtualizada.TipoMensagem;
+            notificacao.TipoMensagem = string.IsNullOrWhiteSpace(notificacaoAtualizada.TipoMensagem)
+                ? "INFO"
+                : notificacaoAtualizada.TipoMensagem;
             notificacao.DataEnvio = notificacaoAtualizada.DataEnvio;
             notificacao.UsuarioId = notificacaoAtualizada.UsuarioId;
 

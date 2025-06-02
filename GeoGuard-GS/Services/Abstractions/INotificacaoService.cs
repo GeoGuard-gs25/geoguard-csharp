@@ -15,6 +15,5 @@ namespace GeoGuard_GS.Services.Abstractions
         Task<Notificacao> AtualizarAsync(int id, Notificacao notificacaoAtualizada);
 
         Task DeletarAsync(int id);
-        Task<Notificacao> Notificar(int idUsuario);
     }
 }

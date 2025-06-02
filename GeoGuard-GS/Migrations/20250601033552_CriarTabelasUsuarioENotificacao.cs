@@ -23,6 +23,7 @@ namespace GeoGuard_GS.Migrations
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     NOME = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
                     EMAIL = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
+                    SENHA = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
                     LOCALIZACAO = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>

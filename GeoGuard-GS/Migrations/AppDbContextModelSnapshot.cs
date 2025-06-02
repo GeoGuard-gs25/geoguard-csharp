@@ -90,6 +90,12 @@ namespace GeoGuard_GS.Migrations
                         .HasColumnType("NVARCHAR2(100)")
                         .HasColumnName("NOME");
 
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR2(100)")
+                        .HasColumnName("SENHA");
+
                     b.HasKey("Id");
 
                     b.ToTable("TB_USUARIO", "RM554694");

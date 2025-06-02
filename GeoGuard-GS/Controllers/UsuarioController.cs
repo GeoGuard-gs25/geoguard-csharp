@@ -72,7 +72,7 @@ namespace GeoGuard_GS.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> Create(UsuarioDTO usuario)
+        public async Task<ActionResult<Usuario>> Create(UsuarioCreateDto usuario)
         {
             try
             {
@@ -91,14 +91,14 @@ namespace GeoGuard_GS.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Usuario usuarioAtualizado)
+        public async Task<IActionResult> Update(int id, UsuarioUpdateDto usuarioDto)
         {
             try
             {
-                if (id != usuarioAtualizado.Id)
+                if (id != usuarioDto.Id)
                     return BadRequest("ID do usuário inválido.");
 
-                await _usuarioService.AtualizarAsync(id, usuarioAtualizado);
+                await _usuarioService.AtualizarAsync(id, usuarioDto);
                 return NoContent();
             }
             catch (UsuarioException ex)

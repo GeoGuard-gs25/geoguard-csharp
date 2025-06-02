@@ -17,7 +17,7 @@ namespace GeoGuard_GS.Services
             _notificacaoService = notificacaoService;
         }
 
-        public async Task<Usuario> CriarAsync(UsuarioDTO usuariodto)
+        public async Task<Usuario> CriarAsync(UsuarioCreateDto usuariodto)
         {
             if (string.IsNullOrWhiteSpace(usuariodto.Nome))
                 throw new UsuarioException("O campo Nome é obrigatório.");
@@ -25,7 +25,11 @@ namespace GeoGuard_GS.Services
             if (string.IsNullOrWhiteSpace(usuariodto.Email))
                 throw new UsuarioException("O campo Email é obrigatório.");
 
-            var emailEmUso = _usuarioService.Usuarios.FirstOrDefault(p => p.Email.Trim() == usuariodto.Email.Trim());
+            if (string.IsNullOrWhiteSpace(usuariodto.Senha))
+                throw new UsuarioException("O campo Senha é obrigatório.");
+
+            var emailEmUso = _usuarioService.Usuarios
+                .FirstOrDefault(p => p.Email.Trim() == usuariodto.Email.Trim());
 
             if (emailEmUso != null)
                 throw new UsuarioException("O email informado já está em uso.");
@@ -38,18 +42,15 @@ namespace GeoGuard_GS.Services
                 Localizacao = usuariodto.Localizacao
             };
 
-            _usuarioService.Usuarios.Add(usuario);
-            _usuarioService.SaveChanges();
-
-            Notificacao notificacao = new Notificacao()
+            try
             {
-                Mensagem = $"Olá {usuario.Nome} está ocorrendo uma chama na sua localização {usuario.Localizacao}",
-                UsuarioId = usuario.Id,
-                DataEnvio = DateTime.Now,
-                Titulo = "Notificação"
-            };
-
-           await _notificacaoService.CriarAsync(notificacao);
+                _usuarioService.Usuarios.Add(usuario);
+                await _usuarioService.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao criar usuário: " + (ex.InnerException?.Message ?? ex.Message));
+            }
 
             return usuario;
         }
@@ -87,15 +88,16 @@ namespace GeoGuard_GS.Services
             return usuario;
         }
 
-        public async Task<Usuario> AtualizarAsync(int id, Usuario usuarioAtualizado)
+        public async Task<Usuario> AtualizarAsync(int id, UsuarioUpdateDto usuarioDto)
         {
             var usuario = await _usuarioService.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
             if (usuario == null)
                 throw new UsuarioException("Usuário não encontrado.");
 
-            usuario.Nome = usuarioAtualizado.Nome;
-            usuario.Email = usuarioAtualizado.Email;
-            usuario.Senha = usuarioAtualizado.Senha;
+            usuario.Nome = usuarioDto.Nome;
+            usuario.Email = usuarioDto.Email;
+            usuario.Senha = usuarioDto.Senha;
+            usuario.Localizacao = usuarioDto.Localizacao;
 
             await _usuarioService.SaveChangesAsync();
             return usuario;

@@ -1,5 +1,4 @@
-﻿using Challenge_MOTTU.Data.Mappings;
-using GeoGuard_GS.Data.Mappings;
+﻿using GeoGuard_GS.Data.Mappings;
 using GeoGuard_GS.Model;
 using Microsoft.EntityFrameworkCore;
 

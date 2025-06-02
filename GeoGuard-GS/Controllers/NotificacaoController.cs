@@ -1,8 +1,6 @@
 ﻿using GeoGuard_GS.Dtos;
 using GeoGuard_GS.Exceptions;
-using GeoGuard_GS.Model;
 using GeoGuard_GS.Model.DTO;
-using GeoGuard_GS.Services;
 using GeoGuard_GS.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,15 +16,6 @@ namespace GeoGuard_GS.Controllers
         public NotificacaoController(INotificacaoService notificacaoService)
         {
             _notificacaoService = notificacaoService;
-        }
-
-
-        [HttpPost("notificar")]
-        public async Task<ActionResult<Notificacao>> Notificar(int id)
-        {
-            var notificacao = await _notificacaoService.Notificar(id);
-
-            return Ok($"{notificacao.Mensagem},\n Tipo: {notificacao.TipoMensagem}");
         }
 
 
@@ -77,8 +66,8 @@ namespace GeoGuard_GS.Controllers
                 if (string.IsNullOrWhiteSpace(dto.Mensagem))
                     return BadRequest("O campo Mensagem é obrigatório.");
 
-                if (!dto.UsuarioId.HasValue)
-                    return BadRequest("O campo UsuarioId é obrigatório.");
+                if (dto.UsuarioId <= 0) 
+                    return BadRequest("O campo UsuarioId é obrigatório e deve ser maior que zero.");
 
                 var notificacao = new Notificacao
                 {
@@ -86,7 +75,7 @@ namespace GeoGuard_GS.Controllers
                     Mensagem = dto.Mensagem,
                     TipoMensagem = dto.TipoMensagem,
                     DataEnvio = dto.DataEnvio,
-                    UsuarioId = dto.UsuarioId.Value
+                    UsuarioId = dto.UsuarioId
                 };
 
                 var notificacaoCriada = await _notificacaoService.CriarAsync(notificacao);
@@ -108,26 +97,24 @@ namespace GeoGuard_GS.Controllers
         {
             try
             {
-                if (id != dto.Id)
-                    return BadRequest("ID da notificação inválido.");
-
-                var notificacao = new Notificacao
+                var notificacaoAtualizada = new Notificacao
                 {
-                    Id = dto.Id,
+                    Id = id,
                     Titulo = dto.Titulo,
                     Mensagem = dto.Mensagem,
                     TipoMensagem = dto.TipoMensagem,
-                    DataEnvio = dto.DataEnvio
+                    DataEnvio = dto.DataEnvio,
+                    UsuarioId = dto.UsuarioId
                 };
 
-                await _notificacaoService.AtualizarAsync(id, notificacao);
+                await _notificacaoService.AtualizarAsync(id, notificacaoAtualizada);
                 return NoContent();
             }
             catch (NotificacaoException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, "Erro interno: " + ex.Message);
             }
