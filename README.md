@@ -57,15 +57,105 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 |--------|----------------------------|---------------------------------------|
 | GET    | `/notificacoes`            | Lista todas as notificações           |
 | GET    | `/notificacoes/{id}`       | Retorna uma notificação específica    |
-| GET    | `/notificacoes/usuario/{usuarioId}` | Retorna uma notificação específica    |
+| GET    | `/notificacoes/usuario/{usuarioId}`| Retorna uma notificaçã do user|
 | POST   | `/notificacoes`            | Envia uma nova notificação            |
-| POST   | `/notificacoes/notificar`  | Envia uma nova notificação            |
 | PUT    | `/notificacoes/{id}`       | Atualiza os dados da notificação      |
 | DELETE | `/notificacoes/{id}`       | Exclui uma notificação                |
 
 ---
 
-## 📥 Exemplo de Requisição
+## 📥 Exemplo de Requisição - Notificações
+
+### 🔸 GET `/usuarios`
+```json
+[
+  {
+    "id": 1,
+    "nome": "João da Silva",
+    "email": "joao@email.com",
+    "senha": "vaitimao",
+    "localizacao": "São Paulo"
+  },
+  {
+    "id": 2,
+    "nome": "Maria Souza",
+    "email": "maria@email.com",
+    "senha": "vaitimao",
+    "localizacao": "São Paulo"
+  },
+]
+````
+
+### 🔸 POST `/usuarios`
+
+```json
+ {
+    "nome": "João da Silva",
+    "email": "joao@email.com",
+    "senha": "vaitimao",
+    "localizacao": "São Paulo"
+  }
+````
+
+### 🔸 GET `/usuarios/1`
+
+```json
+ {
+    "id": 1,
+    "nome": "João da Silva",
+    "email": "joao@email.com",
+    "senha": "vaitimao",
+    "localizacao": "São Paulo"
+  }
+````
+
+### 🔸 GET `/usuarios/buscar?email=joao@email.com`
+
+```json
+[
+    {
+    "id": 1,
+    "nome": "João da Silva",
+    "email": "joao@email.com",
+    "senha": "vaitimao",
+    "localizacao": "São Paulo"
+  }
+]
+````
+
+### 🔸 PUT `/usuarios/1`
+
+```json
+{
+  "id": 1,
+  "nome": "João da Silva Alterado",
+  "email": "joao_novo@email.com",
+  "senha": "novaSenha123",
+  "localizacao": "São Caetano"
+}
+````
+
+### 🔸 DELETE `/usuarios/1`
+
+Sem corpo. Retorna status 204 (No Content).
+
+--------------------------------------------------------------
+
+## 📥 Exemplo de Requisição - Notificações
+
+### 🔸 GET `/notificacoes`
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Alerta de Enchente",
+    "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
+    "tipoMensagem": "ALERTA",
+    "dataEnvio": "2025-05-30T15:00:00",
+    "usuarioId": 1
+  }
+]
+````
 
 ### 🔸 POST `/notificacoes`
 
@@ -77,3 +167,48 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
   "dataEnvio": "2025-05-30T15:00:00",
   "usuarioId": 1
 }
+````
+
+### 🔸 GET `/notificacoes/1`
+
+```json
+{
+  "id": 1,
+  "titulo": "Alerta de Enchente",
+  "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
+  "tipoMensagem": "ALERTA",
+  "dataEnvio": "2025-05-30T15:00:00",
+  "usuarioId": 1
+}
+````
+
+### 🔸 GET `/notificacoes/usuario/1`
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Alerta de Enchente",
+    "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
+    "tipoMensagem": "ALERTA",
+    "dataEnvio": "2025-05-30T15:00:00",
+    "usuarioId": 1
+  }
+]
+````
+
+### 🔸 PUT `/notificacoes/1`
+
+```json
+{
+  "titulo": "Alerta de Enchente Atualizado",
+  "mensagem": "Chuva intensa continua. Atenção redobrada.",
+  "tipoMensagem": "ALERTA",
+  "dataEnvio": "2025-05-30T16:00:00",
+  "usuarioId": 1
+}
+````
+
+### 🔸 DELETE `/notificacoes/1`
+
+Sem corpo. Retorna status 204 (No Content).
