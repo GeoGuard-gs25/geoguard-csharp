@@ -106,11 +106,11 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ````
 ![image](https://github.com/user-attachments/assets/c50d3c4c-68c0-4b27-a34a-eefa8f8a7f9a)
 
-### 🔸 GET `/usuarios/1`
+### 🔸 GET `/usuarios/21`
 
 ```json
  {
-    "id": 1,
+    "id": 21,
     "nome": "João da Silva",
     "email": "joao@email.com",
     "senha": "vaitimao",
@@ -132,7 +132,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ````
 ![image](https://github.com/user-attachments/assets/e34dcb79-fc18-441e-ad3b-958829497a00)
 
-### 🔸 PUT `/usuarios/1`
+### 🔸 PUT `/usuarios/22`
 
 ```json
 {
@@ -145,7 +145,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ````
 ![image](https://github.com/user-attachments/assets/a8d9144c-a8ee-47bc-80b4-50fd19f9d5af)
 
-### 🔸 DELETE `/usuarios/1`
+### 🔸 DELETE `/usuarios/21`
 ![image](https://github.com/user-attachments/assets/1c0fbd6f-100c-47b3-a6fd-d8495232e4d6)
 
 Sem corpo. Retorna status 204 (No Content).
