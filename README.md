@@ -96,6 +96,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
     "localizacao": "São Paulo"
   }
 ````
+![image](https://github.com/user-attachments/assets/c50d3c4c-68c0-4b27-a34a-eefa8f8a7f9a)
 
 ### 🔸 GET `/usuarios/1`
 
