@@ -69,22 +69,30 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ### 🔸 GET `/usuarios`
 ```json
 [
-  {
-    "id": 1,
-    "nome": "João da Silva",
-    "email": "joao@email.com",
-    "senha": "vaitimao",
-    "localizacao": "São Paulo"
-  },
-  {
-    "id": 2,
-    "nome": "Maria Souza",
-    "email": "maria@email.com",
-    "senha": "vaitimao",
-    "localizacao": "São Paulo"
-  },
+    {
+        "id": 22,
+        "nome": "Artur Silva Vaz",
+        "email": "artur@email.com",
+        "senha": "artur123",
+        "localizacao": "São Paulo"
+    },
+    {
+        "id": 23,
+        "nome": "Gabriel Siqueira",
+        "email": "gabrieç@email.com",
+        "senha": "gabriel123",
+        "localizacao": "Rio de Janeiro"
+    },
+    {
+        "id": 21,
+        "nome": "João da Silva",
+        "email": "joao@email.com",
+        "senha": "vaitimao",
+        "localizacao": "São Paulo"
+    }
 ]
 ````
+![image](https://github.com/user-attachments/assets/f94159e1-adb7-4f6c-9bee-61e74b827c7a)
 
 ### 🔸 POST `/usuarios`
 
@@ -109,6 +117,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
     "localizacao": "São Paulo"
   }
 ````
+![image](https://github.com/user-attachments/assets/191caa6d-2876-4e08-90da-8ea47148888a)
 
 ### 🔸 GET `/usuarios/buscar?email=joao@email.com`
 
@@ -123,6 +132,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
   }
 ]
 ````
+![image](https://github.com/user-attachments/assets/e34dcb79-fc18-441e-ad3b-958829497a00)
 
 ### 🔸 PUT `/usuarios/1`
 
