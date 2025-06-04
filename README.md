@@ -119,18 +119,16 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ````
 ![image](https://github.com/user-attachments/assets/191caa6d-2876-4e08-90da-8ea47148888a)
 
-### 🔸 GET `/usuarios/buscar?email=joao@email.com`
+### 🔸 GET `/usuarios/buscar?email=artur@email.com`
 
 ```json
-[
-    {
-    "id": 1,
-    "nome": "João da Silva",
-    "email": "joao@email.com",
-    "senha": "vaitimao",
+{
+    "id": 22,
+    "nome": "Artur Silva Vaz",
+    "email": "artur@email.com",
+    "senha": "artur123",
     "localizacao": "São Paulo"
-  }
-]
+}
 ````
 ![image](https://github.com/user-attachments/assets/e34dcb79-fc18-441e-ad3b-958829497a00)
 
@@ -138,15 +136,17 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ```json
 {
-  "id": 1,
-  "nome": "João da Silva Alterado",
-  "email": "joao_novo@email.com",
-  "senha": "novaSenha123",
-  "localizacao": "São Caetano"
+    "id": 22,
+    "nome": "Pedro Silva",
+    "email": "pedro@email.com",
+    "senha": "pedro123",
+    "localizacao": "São Caetano"
 }
 ````
+![image](https://github.com/user-attachments/assets/a8d9144c-a8ee-47bc-80b4-50fd19f9d5af)
 
 ### 🔸 DELETE `/usuarios/1`
+![image](https://github.com/user-attachments/assets/1c0fbd6f-100c-47b3-a6fd-d8495232e4d6)
 
 Sem corpo. Retorna status 204 (No Content).
 
