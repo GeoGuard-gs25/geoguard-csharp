@@ -167,6 +167,7 @@ Sem corpo. Retorna status 204 (No Content).
   }
 ]
 ````
+![image](https://github.com/user-attachments/assets/d64c945b-0a90-4d75-9e8a-583851505241)
 
 ### 🔸 POST `/notificacoes`
 
@@ -179,6 +180,7 @@ Sem corpo. Retorna status 204 (No Content).
   "usuarioId": 1
 }
 ````
+![image](https://github.com/user-attachments/assets/05c2549a-ece1-4fbd-b6c4-83006b51aded)
 
 ### 🔸 GET `/notificacoes/1`
 
@@ -192,6 +194,7 @@ Sem corpo. Retorna status 204 (No Content).
   "usuarioId": 1
 }
 ````
+![image](https://github.com/user-attachments/assets/406bdb47-3b6b-40aa-830e-9c9f8798b3ca)
 
 ### 🔸 GET `/notificacoes/usuario/1`
 
@@ -207,6 +210,7 @@ Sem corpo. Retorna status 204 (No Content).
   }
 ]
 ````
+![image](https://github.com/user-attachments/assets/fdce53d5-7f42-44ca-9aa7-903fe0d74951)
 
 ### 🔸 PUT `/notificacoes/1`
 
@@ -219,7 +223,10 @@ Sem corpo. Retorna status 204 (No Content).
   "usuarioId": 1
 }
 ````
+![image](https://github.com/user-attachments/assets/389e7a9b-f44b-426a-bbb3-ad4b2f30079e)
 
 ### 🔸 DELETE `/notificacoes/1`
+
+![image](https://github.com/user-attachments/assets/3af80bf4-4e4f-48d2-8101-1ff40592f6fb)
 
 Sem corpo. Retorna status 204 (No Content).
