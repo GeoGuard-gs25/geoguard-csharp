@@ -201,12 +201,12 @@ Sem corpo. Retorna status 204 (No Content).
 ```json
 [
   {
-    "id": 1,
+    "id": 21,
     "titulo": "Alerta de Enchente",
     "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
     "tipoMensagem": "ALERTA",
     "dataEnvio": "2025-05-30T15:00:00",
-    "usuarioId": 1
+    "usuarioId": 21
   }
 ]
 ````
