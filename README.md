@@ -38,6 +38,49 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
+## 📁 Estrutura do Projeto
+
+```bash
+GeoGuard-GS/
+├── Controllers/
+│   ├── NotificacaoController.cs
+│   └── UsuarioController.cs
+│
+├── Data/
+│   ├── AppDbContext.cs
+│   └── Mappings/
+│       ├── NotificacaoMapping.cs
+│       └── UsuarioMapping.cs
+│
+├── Exceptions/
+│   ├── NotificacaoException.cs
+│   └── UsuarioException.cs
+│
+├── Migrations/
+│   (arquivos de migração do Entity Framework)
+│
+├── Model/
+│   ├── DTO/
+│   │   ├── NotificacaoCreateDto.cs
+│   │   ├── NotificacaoUpdateDto.cs
+│   │   ├── UsuarioCreateDto.cs
+│   │   └── UsuarioUpdateDto.cs
+│   ├── Notificacao.cs
+│   └── Usuario.cs
+│
+├── Services/
+│   ├── Abstractions/
+│   │   ├── INotificacaoService.cs
+│   │   └── IUsuarioService.cs
+│   ├── NotificacaoService.cs
+│   └── UsuarioService.cs
+│
+├── appsettings.json
+├── GeoGuard-GS.csproj
+├── GeoGuard-GS.http
+└── Program.cs
+````
+
 ## 🔗 Rotas da API
 
 ### 👤 Usuários
