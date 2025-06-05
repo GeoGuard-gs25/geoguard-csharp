@@ -196,7 +196,7 @@ Sem corpo. Retorna status 204 (No Content).
 ````
 ![image](https://github.com/user-attachments/assets/406bdb47-3b6b-40aa-830e-9c9f8798b3ca)
 
-### 🔸 GET `/notificacoes/usuario/1`
+### 🔸 GET `/notificacoes/usuario/21`
 
 ```json
 [
@@ -225,7 +225,7 @@ Sem corpo. Retorna status 204 (No Content).
 ````
 ![image](https://github.com/user-attachments/assets/389e7a9b-f44b-426a-bbb3-ad4b2f30079e)
 
-### 🔸 DELETE `/notificacoes/1`
+### 🔸 DELETE `/notificacoes/21`
 
 ![image](https://github.com/user-attachments/assets/3af80bf4-4e4f-48d2-8101-1ff40592f6fb)
 
