@@ -220,7 +220,7 @@ Sem corpo. Retorna status 204 (No Content).
   "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T15:00:00",
-  "usuarioId": 1
+  "usuarioId": 21
 }
 ````
 ![image](https://github.com/user-attachments/assets/05c2549a-ece1-4fbd-b6c4-83006b51aded)
@@ -229,12 +229,12 @@ Sem corpo. Retorna status 204 (No Content).
 
 ```json
 {
-  "id": 1,
+  "id": 22,
   "titulo": "Alerta de Enchente",
   "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T15:00:00",
-  "usuarioId": 1
+  "usuarioId": 22
 }
 ````
 ![image](https://github.com/user-attachments/assets/406bdb47-3b6b-40aa-830e-9c9f8798b3ca)
@@ -244,12 +244,12 @@ Sem corpo. Retorna status 204 (No Content).
 ```json
 [
   {
-    "id": 1,
+    "id": 21,
     "titulo": "Alerta de Enchente",
     "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
     "tipoMensagem": "ALERTA",
     "dataEnvio": "2025-05-30T15:00:00",
-    "usuarioId": 1
+    "usuarioId": 21
   }
 ]
 ````
@@ -263,7 +263,7 @@ Sem corpo. Retorna status 204 (No Content).
   "mensagem": "Chuva intensa continua. Atenção redobrada.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T16:00:00",
-  "usuarioId": 1
+  "usuarioId": 21
 }
 ````
 ![image](https://github.com/user-attachments/assets/389e7a9b-f44b-426a-bbb3-ad4b2f30079e)
