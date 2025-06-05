@@ -182,7 +182,7 @@ Sem corpo. Retorna status 204 (No Content).
 ````
 ![image](https://github.com/user-attachments/assets/05c2549a-ece1-4fbd-b6c4-83006b51aded)
 
-### 🔸 GET `/notificacoes/1`
+### 🔸 GET `/notificacoes/22`
 
 ```json
 {
