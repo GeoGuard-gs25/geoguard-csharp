@@ -38,7 +38,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
-**## 📦 Entidades do Banco de Dados
+## 📦 Entidades do Banco de Dados
 
 ### 🧑‍💻 Usuario
 
