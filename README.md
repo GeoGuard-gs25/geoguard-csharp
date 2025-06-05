@@ -18,26 +18,6 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
-## 🎯 Funcionalidades
-
-### 👤 Usuários
-
-- ✅ Cadastro de novos usuários  
-- ✅ Listagem de todos os usuários  
-- ✅ Consulta de usuário por ID  
-- ✅ Atualização de dados cadastrais  
-- ✅ Exclusão de usuários  
-
-### 📢 Notificações
-
-- ✅ Envio de novas notificações  
-- ✅ Listagem de todas as notificações  
-- ✅ Consulta de notificação por ID  
-- ✅ Atualização de notificações existentes  
-- ✅ Remoção de notificações  
-
----
-
 ## 📦 Entidades do Banco de Dados
 
 ### 🧑‍💻 Usuario
