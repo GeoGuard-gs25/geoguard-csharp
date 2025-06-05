@@ -301,3 +301,9 @@ Sem corpo. Retorna status 204 (No Content).
 ![image](https://github.com/user-attachments/assets/3af80bf4-4e4f-48d2-8101-1ff40592f6fb)
 
 Sem corpo. Retorna status 204 (No Content).
+
+---
+![image](https://github.com/user-attachments/assets/f257df23-fdbc-43cb-b98d-7b2ffb97db8e)
+
+---
+![image](https://github.com/user-attachments/assets/2187cc69-613a-45d9-a04d-f9aad376be93)
