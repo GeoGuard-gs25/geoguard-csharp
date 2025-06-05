@@ -145,7 +145,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 ````
 ![image](https://github.com/user-attachments/assets/a8d9144c-a8ee-47bc-80b4-50fd19f9d5af)
 
-### 🔸 DELETE `/usuarios/21`
+### 🔸 DELETE `/usuarios/22`
 ![image](https://github.com/user-attachments/assets/1c0fbd6f-100c-47b3-a6fd-d8495232e4d6)
 
 Sem corpo. Retorna status 204 (No Content).
