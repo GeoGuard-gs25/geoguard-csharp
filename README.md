@@ -38,6 +38,34 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
+**## 📦 Entidades do Banco de Dados
+
+### 🧑‍💻 Usuario
+
+**Atributos:**
+
+- **Id**: Identificador único do usuário.
+- **Nome**: Nome completo do usuário. Obrigatório e limitado a 100 caracteres.
+- **Email**: Endereço de e-mail válido. Obrigatório.
+- **Senha**: Senha do usuário. Obrigatória, com no mínimo 6 e no máximo 100 caracteres.
+- **Localizacao**: Localização atual do usuário. Opcional, com até 150 caracteres.
+- **Notificacoes**: Lista de notificações relacionadas ao usuário (relacionamento 1:N com a entidade Notificacao).
+
+---
+
+### 🔔 Notificacao
+
+**Atributos:**
+
+- **Id**: Identificador único da notificação.
+- **Titulo**: Título da notificação. Obrigatório, com até 100 caracteres.
+- **Mensagem**: Texto da mensagem da notificação. Obrigatório, com até 500 caracteres.
+- **TipoMensagem**: Tipo da mensagem (ex: alerta, aviso, informativo). Opcional, com até 50 caracteres.
+- **DataEnvio**: Data e hora do envio da notificação. Por padrão, é preenchido com a data/hora atual no formato UTC.
+- **UsuarioId**: Chave estrangeira que referencia o usuário que recebeu a notificação.
+- **Usuario**: Relacionamento com a entidade Usuario (propriedade de navegação).
+
+
 ## 📁 Estrutura do Projeto
 
 ```bash
