@@ -64,7 +64,7 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
-## 📥 Exemplo de Requisição - Notificações
+## 📥 Exemplo de Testes das requisições - Notificações
 
 ### 🔸 GET `/usuarios`
 ```json
