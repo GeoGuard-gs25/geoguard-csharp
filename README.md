@@ -46,6 +46,46 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 - **Usuario**: Relacionamento com a entidade Usuario (propriedade de navegação).
 
 
+## 🚀 Como rodar o projeto
+
+### ✅ Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina:
+
+- [.NET SDK](https://dotnet.microsoft.com/download) (recomendo a versão usada no projeto, ex: .NET 7 ou .NET 8)
+- [Visual Studio](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) com extensão C#
+
+### 📦 Clonando o repositório
+
+```bash
+git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
+cd NOME_DO_REPOSITORIO
+```
+
+🛠️ Configurando o projeto
+Abra o projeto com Visual Studio ou VS Code.
+
+Verifique o arquivo appsettings.json para configurar sua string de conexão com o banco de dados.
+
+Aplique as migrations (se houver Entity Framework):
+
+dotnet ef database update
+Se dotnet ef não estiver disponível, instale com:
+
+dotnet tool install --global dotnet-ef
+▶️ Executando a aplicação
+No terminal ou no Visual Studio:
+
+dotnet run
+O servidor será iniciado e estará disponível em:
+
+https://localhost:5001
+http://localhost:5000
+Você também pode testar os endpoints no Swagger acessando:
+
+https://localhost:5001/swagger
+
+
 ## 📁 Estrutura do Projeto
 
 ```bash
