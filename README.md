@@ -73,10 +73,13 @@ dotnet ef database update
 Se dotnet ef não estiver disponível, instale com:
 
 dotnet tool install --global dotnet-ef
+
 ▶️ Executando a aplicação
+
 No terminal ou no Visual Studio:
 
 dotnet run
+
 O servidor será iniciado e estará disponível em:
 
 https://localhost:5001
