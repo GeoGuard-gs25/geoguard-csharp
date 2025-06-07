@@ -12,13 +12,15 @@ namespace GeoGuard_GS.Controllers
     {
         private readonly INotificacaoService _notificacaoService;
 
-
         public NotificacaoController(INotificacaoService notificacaoService)
         {
             _notificacaoService = notificacaoService;
         }
 
-
+        /// <summary>
+        /// Retorna todas as notificações cadastradas.
+        /// </summary>
+        /// <returns>Lista de notificações.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Notificacao>>> GetAll()
         {
@@ -37,6 +39,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna uma notificação específica pelo ID.
+        /// </summary>
+        /// <param name="id">ID da notificação.</param>
+        /// <returns>Notificação correspondente.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Notificacao>> GetById(int id)
         {
@@ -55,6 +62,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria uma nova notificação.
+        /// </summary>
+        /// <param name="dto">Dados para criação da notificação.</param>
+        /// <returns>Notificação criada.</returns>
         [HttpPost]
         public async Task<ActionResult<Notificacao>> Create([FromBody] NotificacaoCreateDto dto)
         {
@@ -66,7 +78,7 @@ namespace GeoGuard_GS.Controllers
                 if (string.IsNullOrWhiteSpace(dto.Mensagem))
                     return BadRequest("O campo Mensagem é obrigatório.");
 
-                if (dto.UsuarioId <= 0) 
+                if (dto.UsuarioId <= 0)
                     return BadRequest("O campo UsuarioId é obrigatório e deve ser maior que zero.");
 
                 var notificacao = new Notificacao
@@ -92,6 +104,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza uma notificação existente.
+        /// </summary>
+        /// <param name="id">ID da notificação a ser atualizada.</param>
+        /// <param name="dto">Dados atualizados da notificação.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] NotificacaoUpdateDto dto)
         {
@@ -120,6 +137,10 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Remove uma notificação pelo ID.
+        /// </summary>
+        /// <param name="id">ID da notificação a ser excluída.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -138,6 +159,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todas as notificações associadas a um usuário.
+        /// </summary>
+        /// <param name="usuarioId">ID do usuário.</param>
+        /// <returns>Lista de notificações do usuário.</returns>
         [HttpGet("usuario/{usuarioId}")]
         public async Task<ActionResult<IEnumerable<Notificacao>>> GetByUsuarioId(int usuarioId)
         {

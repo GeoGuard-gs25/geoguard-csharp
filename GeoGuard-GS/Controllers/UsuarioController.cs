@@ -6,17 +6,28 @@ using GeoGuard_GS.Model.DTO;
 
 namespace GeoGuard_GS.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pelas operações relacionadas aos usuários.
+    /// </summary>
     [ApiController]
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
 
+        /// <summary>
+        /// Construtor do controlador de usuários.
+        /// </summary>
+        /// <param name="usuarioService">Serviço responsável pela lógica de usuários.</param>
         public UsuarioController(IUsuarioService usuarioService)
         {
             _usuarioService = usuarioService;
         }
 
+        /// <summary>
+        /// Retorna todos os usuários cadastrados.
+        /// </summary>
+        /// <returns>Lista de usuários.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetAll()
         {
@@ -35,6 +46,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um usuário pelo seu ID.
+        /// </summary>
+        /// <param name="id">ID do usuário.</param>
+        /// <returns>Usuário correspondente ao ID informado.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> GetById(int id)
         {
@@ -53,6 +69,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um usuário pelo e-mail.
+        /// </summary>
+        /// <param name="email">E-mail do usuário.</param>
+        /// <returns>Usuário correspondente ao e-mail informado.</returns>
         [HttpGet("buscar")]
         public async Task<ActionResult<Usuario>> GetByEmail([FromQuery] string email)
         {
@@ -71,13 +92,17 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria um novo usuário.
+        /// </summary>
+        /// <param name="usuario">DTO com os dados para criação do usuário.</param>
+        /// <returns>Usuário criado com status 201.</returns>
         [HttpPost]
         public async Task<ActionResult<Usuario>> Create(UsuarioCreateDto usuario)
         {
             try
             {
-                var usuarioCriado =  await _usuarioService.CriarAsync(usuario);
-
+                var usuarioCriado = await _usuarioService.CriarAsync(usuario);
                 return CreatedAtAction(nameof(GetById), new { id = usuarioCriado.Id }, usuarioCriado);
             }
             catch (UsuarioException ex)
@@ -90,6 +115,12 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza os dados de um usuário.
+        /// </summary>
+        /// <param name="id">ID do usuário a ser atualizado.</param>
+        /// <param name="usuarioDto">DTO com os dados atualizados.</param>
+        /// <returns>Status 204 em caso de sucesso.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UsuarioUpdateDto usuarioDto)
         {
@@ -111,6 +142,11 @@ namespace GeoGuard_GS.Controllers
             }
         }
 
+        /// <summary>
+        /// Remove um usuário pelo ID.
+        /// </summary>
+        /// <param name="id">ID do usuário a ser deletado.</param>
+        /// <returns>Status 204 em caso de sucesso.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

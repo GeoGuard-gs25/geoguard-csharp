@@ -19,10 +19,6 @@ builder.Services.AddSwaggerGen(c =>
             Name = "GeoGuard - GS",
         }
     });
-
-    var xmlFile = "GeoGuard_GS.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
