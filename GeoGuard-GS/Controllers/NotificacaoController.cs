@@ -3,6 +3,7 @@ using GeoGuard_GS.Exceptions;
 using GeoGuard_GS.Model.DTO;
 using GeoGuard_GS.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations; // IMPORTANTE: adicionar este using
 
 namespace GeoGuard_GS.Controllers
 {
@@ -22,6 +23,10 @@ namespace GeoGuard_GS.Controllers
         /// </summary>
         /// <returns>Lista de notificações.</returns>
         [HttpGet]
+        [SwaggerOperation(Summary = "Retorna todas as notificações", Description = "Obtém uma lista completa de notificações cadastradas no sistema.")]
+        [SwaggerResponse(200, "Lista de notificações retornada com sucesso.")]
+        [SwaggerResponse(400, "Erro de validação ou de negócio.")]
+        [SwaggerResponse(500, "Erro interno no servidor.")]
         public async Task<ActionResult<IEnumerable<Notificacao>>> GetAll()
         {
             try
@@ -45,6 +50,10 @@ namespace GeoGuard_GS.Controllers
         /// <param name="id">ID da notificação.</param>
         /// <returns>Notificação correspondente.</returns>
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Retorna uma notificação pelo ID", Description = "Obtém uma notificação específica com base no ID informado.")]
+        [SwaggerResponse(200, "Notificação encontrada com sucesso.")]
+        [SwaggerResponse(404, "Notificação não encontrada.")]
+        [SwaggerResponse(400, "Erro de requisição.")]
         public async Task<ActionResult<Notificacao>> GetById(int id)
         {
             try
@@ -68,6 +77,10 @@ namespace GeoGuard_GS.Controllers
         /// <param name="dto">Dados para criação da notificação.</param>
         /// <returns>Notificação criada.</returns>
         [HttpPost]
+        [SwaggerOperation(Summary = "Cria uma nova notificação", Description = "Cria uma nova notificação com base nos dados fornecidos.")]
+        [SwaggerResponse(201, "Notificação criada com sucesso.")]
+        [SwaggerResponse(400, "Erro de validação ou de negócio.")]
+        [SwaggerResponse(500, "Erro interno no servidor.")]
         public async Task<ActionResult<Notificacao>> Create([FromBody] NotificacaoCreateDto dto)
         {
             try
@@ -110,6 +123,10 @@ namespace GeoGuard_GS.Controllers
         /// <param name="id">ID da notificação a ser atualizada.</param>
         /// <param name="dto">Dados atualizados da notificação.</param>
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Atualiza uma notificação", Description = "Atualiza os dados de uma notificação com base no ID informado.")]
+        [SwaggerResponse(204, "Notificação atualizada com sucesso.")]
+        [SwaggerResponse(400, "Erro de validação ou de negócio.")]
+        [SwaggerResponse(500, "Erro interno no servidor.")]
         public async Task<IActionResult> Update(int id, [FromBody] NotificacaoUpdateDto dto)
         {
             try
@@ -142,6 +159,10 @@ namespace GeoGuard_GS.Controllers
         /// </summary>
         /// <param name="id">ID da notificação a ser excluída.</param>
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Remove uma notificação", Description = "Remove uma notificação do sistema com base no ID informado.")]
+        [SwaggerResponse(204, "Notificação removida com sucesso.")]
+        [SwaggerResponse(404, "Notificação não encontrada.")]
+        [SwaggerResponse(500, "Erro interno no servidor.")]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -165,6 +186,10 @@ namespace GeoGuard_GS.Controllers
         /// <param name="usuarioId">ID do usuário.</param>
         /// <returns>Lista de notificações do usuário.</returns>
         [HttpGet("usuario/{usuarioId}")]
+        [SwaggerOperation(Summary = "Retorna notificações de um usuário", Description = "Obtém todas as notificações associadas a um usuário específico.")]
+        [SwaggerResponse(200, "Lista de notificações retornada com sucesso.")]
+        [SwaggerResponse(404, "Usuário ou notificações não encontradas.")]
+        [SwaggerResponse(500, "Erro interno no servidor.")]
         public async Task<ActionResult<IEnumerable<Notificacao>>> GetByUsuarioId(int usuarioId)
         {
             try
