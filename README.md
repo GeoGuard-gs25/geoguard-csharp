@@ -18,25 +18,103 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
-## 🎯 Funcionalidades
+## 📦 Entidades do Banco de Dados
 
-### 👤 Usuários
+### 🧑‍💻 Usuario
 
-- ✅ Cadastro de novos usuários  
-- ✅ Listagem de todos os usuários  
-- ✅ Consulta de usuário por ID  
-- ✅ Atualização de dados cadastrais  
-- ✅ Exclusão de usuários  
+**Atributos:**
 
-### 📢 Notificações
-
-- ✅ Envio de novas notificações  
-- ✅ Listagem de todas as notificações  
-- ✅ Consulta de notificação por ID  
-- ✅ Atualização de notificações existentes  
-- ✅ Remoção de notificações  
+- **Id**: Identificador único do usuário.
+- **Nome**: Nome completo do usuário. Obrigatório e limitado a 100 caracteres.
+- **Email**: Endereço de e-mail válido. Obrigatório.
+- **Senha**: Senha do usuário. Obrigatória, com no mínimo 6 e no máximo 100 caracteres.
+- **Localizacao**: Localização atual do usuário. Opcional, com até 150 caracteres.
+- **Notificacoes**: Lista de notificações relacionadas ao usuário (relacionamento 1:N com a entidade Notificacao).
 
 ---
+
+### 🔔 Notificacao
+
+**Atributos:**
+
+- **Id**: Identificador único da notificação.
+- **Titulo**: Título da notificação. Obrigatório, com até 100 caracteres.
+- **Mensagem**: Texto da mensagem da notificação. Obrigatório, com até 500 caracteres.
+- **TipoMensagem**: Tipo da mensagem (ex: alerta, aviso, informativo). Opcional, com até 50 caracteres.
+- **DataEnvio**: Data e hora do envio da notificação. Por padrão, é preenchido com a data/hora atual no formato UTC.
+- **UsuarioId**: Chave estrangeira que referencia o usuário que recebeu a notificação.
+- **Usuario**: Relacionamento com a entidade Usuario (propriedade de navegação).
+
+
+## 🚀 Como rodar o projeto
+
+### ✅ Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina:
+
+- [.NET SDK](https://dotnet.microsoft.com/download) (recomendo a versão usada no projeto, ex: .NET 7 ou .NET 8)
+- [Visual Studio](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) com extensão C#
+
+2. Configure o arquivo `appsettings.json` com seus dados do **Oracle FIAP**
+
+3. Rode os comandos no terminal:
+
+```bash
+dotnet ef database update
+dotnet run
+```
+O servidor será iniciado e estará disponível em:
+
+https://localhost:5001
+http://localhost:5000
+
+Você também pode testar os endpoints no Swagger acessando:
+
+https://localhost:5001/swagger
+
+
+## 📁 Estrutura do Projeto
+
+```bash
+GeoGuard-GS/
+├── Controllers/
+│   ├── NotificacaoController.cs
+│   └── UsuarioController.cs
+│
+├── Data/
+│   ├── AppDbContext.cs
+│   └── Mappings/
+│       ├── NotificacaoMapping.cs
+│       └── UsuarioMapping.cs
+│
+├── Exceptions/
+│   ├── NotificacaoException.cs
+│   └── UsuarioException.cs
+│
+├── Migrations/
+│   (arquivos de migração do Entity Framework)
+│
+├── Model/
+│   ├── DTO/
+│   │   ├── NotificacaoCreateDto.cs
+│   │   ├── NotificacaoUpdateDto.cs
+│   │   ├── UsuarioCreateDto.cs
+│   │   └── UsuarioUpdateDto.cs
+│   ├── Notificacao.cs
+│   └── Usuario.cs
+│
+├── Services/
+│   ├── Abstractions/
+│   │   ├── INotificacaoService.cs
+│   │   └── IUsuarioService.cs
+│   ├── NotificacaoService.cs
+│   └── UsuarioService.cs
+│
+├── appsettings.json
+├── GeoGuard-GS.csproj
+├── GeoGuard-GS.http
+└── Program.cs
+````
 
 ## 🔗 Rotas da API
 
@@ -64,27 +142,35 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
 
 ---
 
-## 📥 Exemplo de Requisição - Notificações
+## 📥 Exemplo de Testes das requisições - Notificações
 
 ### 🔸 GET `/usuarios`
 ```json
 [
-  {
-    "id": 1,
-    "nome": "João da Silva",
-    "email": "joao@email.com",
-    "senha": "vaitimao",
-    "localizacao": "São Paulo"
-  },
-  {
-    "id": 2,
-    "nome": "Maria Souza",
-    "email": "maria@email.com",
-    "senha": "vaitimao",
-    "localizacao": "São Paulo"
-  },
+    {
+        "id": 22,
+        "nome": "Artur Silva Vaz",
+        "email": "artur@email.com",
+        "senha": "artur123",
+        "localizacao": "São Paulo"
+    },
+    {
+        "id": 23,
+        "nome": "Gabriel Siqueira",
+        "email": "gabrieç@email.com",
+        "senha": "gabriel123",
+        "localizacao": "Rio de Janeiro"
+    },
+    {
+        "id": 21,
+        "nome": "João da Silva",
+        "email": "joao@email.com",
+        "senha": "vaitimao",
+        "localizacao": "São Paulo"
+    }
 ]
 ````
+![image](https://github.com/user-attachments/assets/f94159e1-adb7-4f6c-9bee-61e74b827c7a)
 
 ### 🔸 POST `/usuarios`
 
@@ -96,46 +182,49 @@ O sistema **GeoGuard** tem como objetivo notificar **usuários cadastrados** sob
     "localizacao": "São Paulo"
   }
 ````
+![image](https://github.com/user-attachments/assets/c50d3c4c-68c0-4b27-a34a-eefa8f8a7f9a)
 
-### 🔸 GET `/usuarios/1`
+### 🔸 GET `/usuarios/21`
 
 ```json
  {
-    "id": 1,
+    "id": 21,
     "nome": "João da Silva",
     "email": "joao@email.com",
     "senha": "vaitimao",
     "localizacao": "São Paulo"
   }
 ````
+![image](https://github.com/user-attachments/assets/191caa6d-2876-4e08-90da-8ea47148888a)
 
-### 🔸 GET `/usuarios/buscar?email=joao@email.com`
-
-```json
-[
-    {
-    "id": 1,
-    "nome": "João da Silva",
-    "email": "joao@email.com",
-    "senha": "vaitimao",
-    "localizacao": "São Paulo"
-  }
-]
-````
-
-### 🔸 PUT `/usuarios/1`
+### 🔸 GET `/usuarios/buscar?email=artur@email.com`
 
 ```json
 {
-  "id": 1,
-  "nome": "João da Silva Alterado",
-  "email": "joao_novo@email.com",
-  "senha": "novaSenha123",
-  "localizacao": "São Caetano"
+    "id": 22,
+    "nome": "Artur Silva Vaz",
+    "email": "artur@email.com",
+    "senha": "artur123",
+    "localizacao": "São Paulo"
 }
 ````
+![image](https://github.com/user-attachments/assets/e34dcb79-fc18-441e-ad3b-958829497a00)
 
-### 🔸 DELETE `/usuarios/1`
+### 🔸 PUT `/usuarios/22`
+
+```json
+{
+    "id": 22,
+    "nome": "Pedro Silva",
+    "email": "pedro@email.com",
+    "senha": "pedro123",
+    "localizacao": "São Caetano"
+}
+````
+![image](https://github.com/user-attachments/assets/a8d9144c-a8ee-47bc-80b4-50fd19f9d5af)
+
+### 🔸 DELETE `/usuarios/22`
+![image](https://github.com/user-attachments/assets/1c0fbd6f-100c-47b3-a6fd-d8495232e4d6)
 
 Sem corpo. Retorna status 204 (No Content).
 
@@ -147,15 +236,16 @@ Sem corpo. Retorna status 204 (No Content).
 ```json
 [
   {
-    "id": 1,
+    "id": 21,
     "titulo": "Alerta de Enchente",
     "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
     "tipoMensagem": "ALERTA",
     "dataEnvio": "2025-05-30T15:00:00",
-    "usuarioId": 1
+    "usuarioId": 21
   }
 ]
 ````
+![image](https://github.com/user-attachments/assets/d64c945b-0a90-4d75-9e8a-583851505241)
 
 ### 🔸 POST `/notificacoes`
 
@@ -165,39 +255,42 @@ Sem corpo. Retorna status 204 (No Content).
   "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T15:00:00",
-  "usuarioId": 1
+  "usuarioId": 21
 }
 ````
+![image](https://github.com/user-attachments/assets/05c2549a-ece1-4fbd-b6c4-83006b51aded)
 
-### 🔸 GET `/notificacoes/1`
+### 🔸 GET `/notificacoes/22`
 
 ```json
 {
-  "id": 1,
+  "id": 22,
   "titulo": "Alerta de Enchente",
   "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T15:00:00",
-  "usuarioId": 1
+  "usuarioId": 22
 }
 ````
+![image](https://github.com/user-attachments/assets/406bdb47-3b6b-40aa-830e-9c9f8798b3ca)
 
-### 🔸 GET `/notificacoes/usuario/1`
+### 🔸 GET `/notificacoes/usuario/21`
 
 ```json
 [
   {
-    "id": 1,
+    "id": 21,
     "titulo": "Alerta de Enchente",
     "mensagem": "Chuva intensa nas próximas horas. Evite áreas de risco.",
     "tipoMensagem": "ALERTA",
     "dataEnvio": "2025-05-30T15:00:00",
-    "usuarioId": 1
+    "usuarioId": 21
   }
 ]
 ````
+![image](https://github.com/user-attachments/assets/fdce53d5-7f42-44ca-9aa7-903fe0d74951)
 
-### 🔸 PUT `/notificacoes/1`
+### 🔸 PUT `/notificacoes/21`
 
 ```json
 {
@@ -205,10 +298,21 @@ Sem corpo. Retorna status 204 (No Content).
   "mensagem": "Chuva intensa continua. Atenção redobrada.",
   "tipoMensagem": "ALERTA",
   "dataEnvio": "2025-05-30T16:00:00",
-  "usuarioId": 1
+  "usuarioId": 21
 }
 ````
+![image](https://github.com/user-attachments/assets/389e7a9b-f44b-426a-bbb3-ad4b2f30079e)
 
-### 🔸 DELETE `/notificacoes/1`
+### 🔸 DELETE `/notificacoes/21`
+
+![image](https://github.com/user-attachments/assets/3af80bf4-4e4f-48d2-8101-1ff40592f6fb)
 
 Sem corpo. Retorna status 204 (No Content).
+
+---
+## Diagrama Lógico
+![image](https://github.com/user-attachments/assets/f257df23-fdbc-43cb-b98d-7b2ffb97db8e)
+
+---
+## Diagrama Relacional
+![image](https://github.com/user-attachments/assets/2187cc69-613a-45d9-a04d-f9aad376be93)
