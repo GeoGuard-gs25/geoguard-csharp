@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>GeoGuard_GS</RootNamespace>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+	  <DocumentationFile>bin\Debug\net9.0\GeoGuard_GS.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
