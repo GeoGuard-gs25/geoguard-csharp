@@ -3,7 +3,7 @@ using GeoGuard_GS.Exceptions;
 using GeoGuard_GS.Model.DTO;
 using GeoGuard_GS.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations; // IMPORTANTE: adicionar este using
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace GeoGuard_GS.Controllers
 {
