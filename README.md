@@ -55,7 +55,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 - [.NET SDK](https://dotnet.microsoft.com/download) (recomendo a versão usada no projeto, ex: .NET 7 ou .NET 8)
 - [Visual Studio](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) com extensão C#
 
-2. Configure o arquivo `appsettings.json` com seus dados do **Oracle FIAP**
+2. Configure o arquivo `appsettings.json` com dados do seu Banco
 
 3. Rode os comandos no terminal:
 
@@ -64,7 +64,7 @@ dotnet ef database update
 dotnet run
 ```
 O servidor será iniciado e estará disponível em:
-
+Ex:
 https://localhost:5001
 http://localhost:5000
 
